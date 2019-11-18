@@ -8,14 +8,6 @@ pipeline {
         maven 'maven-3.6.2'
 		jdk 'openjdk-8-jdk'
     }
-    node {
-            def remote  = [:]
-            remote.name = "Test06"
-            remote.host = "10.134.19.206"
-            remote.user = "user"
-            remote.password = "tcs#1234"
-            remote.allowAnyHosts = true
-    }
     stages {
         stage('Initalize'){
             steps {
@@ -52,7 +44,15 @@ pipeline {
             }
         }
         stage ('Kubernetes Deployment') {
-            sshCommand remote: remote, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+            steps {
+                def remote  = [:]
+                remote.name = "Test06"
+                remote.host = "10.134.19.206"
+                remote.user = "user"
+                remote.password = "tcs#1234"
+                remote.allowAnyHosts = true
+                sshCommand remote: remote, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+            }
         }
     }
 }
