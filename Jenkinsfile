@@ -45,6 +45,7 @@ pipeline {
         }
         stage ('Kubernetes Deployment') {
             steps {
+                script {
                 def remote  = [:]
                 remote.name = "Test06"
                 remote.host = "10.134.19.206"
@@ -52,6 +53,7 @@ pipeline {
                 remote.password = "tcs#1234"
                 remote.allowAnyHosts = true
                 sshCommand remote: remote, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+                }
             }
         }
     }
