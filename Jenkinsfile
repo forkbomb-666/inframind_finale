@@ -67,7 +67,7 @@ pipeline {
                     remote.password = "tcs#1234"
                     remote.allowAnyHosts = true
                     numPods = sshCommand remote, command: "kubectl get pods | grep Running | wc -l"
-                    echo numPods
+                    echo "$numPods"
                     if (numPods == 0) {
                         // deploy to cluster velachery
                     } else {
