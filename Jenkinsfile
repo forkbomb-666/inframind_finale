@@ -1,6 +1,7 @@
 pipeline {
     environment {
         app = ''
+        image_name = 'drake666/inframind-finale'
     }
     agent any
     tools {
@@ -22,6 +23,23 @@ pipeline {
             steps {
                 script {
                     sh 'mvn clean package'
+                }
+            }
+        }
+        stage ('Build Image') {
+            steps {
+                script {
+                    app = docker.build(image_name)
+                }
+            }
+        }
+        stage ('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry('', 'dockerhubcreds'){
+                        app.push("$BUILD_NUMBER")
+                        app.push("latest")
+                    }
                 }
             }
         }

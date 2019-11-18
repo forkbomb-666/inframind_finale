@@ -14,7 +14,6 @@
             <h2>DevOps & Docker Containers</h2>
             <br>
             <h6>Snehangshu Bhattacharya CT20172216668<h6>
-            <h6>Aritra Roy Gosthipaty CT20172207267<h6>
         </div>
         <a href="/hello" class="btn btn-primary">MySQL DataBase Browser</a>
     </div>
