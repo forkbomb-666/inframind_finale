@@ -1,14 +1,3 @@
-node {
-    def remote-siruseri  = [:]
-    remote-siruseri.name = "Test06"
-    remote-siruseri.host = "10.134.19.206"
-    remote-siruseri.user = "user"
-    remote-siruseri.password = "tcs#1234"
-    remote-siruseri.allowAnyHosts = true
-}
-
-
-
 pipeline {
     environment {
         app = ''
@@ -57,7 +46,15 @@ pipeline {
         stage ('Kubernetes Deployment') {
             steps {
                 script {
-                    sshCommand remote: remote-siruseri, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+                    node {
+                        def remote-siruseri  = [:]
+                        remote-siruseri.name = "Test06"
+                        remote-siruseri.host = "10.134.19.206"
+                        remote-siruseri.user = "user"
+                        remote-siruseri.password = "tcs#1234"
+                        remote-siruseri.allowAnyHosts = true
+                        sshCommand remote: remote-siruseri, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+                        }
                     }
                 }
             }
