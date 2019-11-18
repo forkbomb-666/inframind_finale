@@ -43,5 +43,12 @@ pipeline {
                 }
             }
         }
+        stage ('Kubernetes Deployment') {
+            steps {
+                script {
+                    withKubeConfig(clusterName: 'kubernetes', contextName: 'kubernetes-admin', serverUrl: 'https://10.134.19.206:6443', credentialsId: 'kubeSecret'  )
+                }
+            }
+        }
     }
 }

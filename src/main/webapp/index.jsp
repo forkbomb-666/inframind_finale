@@ -13,7 +13,7 @@
             <hr>
             <h2>DevOps & Docker Containers</h2>
             <br>
-            <h6>Snehangshu Bhattacharya CT20172216668<h6>
+            <h6>Snehangshu Bhattacharya</h6><br><h6>CT20172216668<h6>
         </div>
         <a href="/hello" class="btn btn-primary">MySQL DataBase Browser</a>
     </div>
