@@ -66,10 +66,11 @@ pipeline {
                     remote.user = "user"
                     remote.password = "tcs#1234"
                     remote.allowAnyHosts = true
-                    numPods = sshCommand remote, command: "kubectl get pods | grep Running | wc -l"
+                    numPods = sshCommand remote, command: '''kubectl get pods | grep Running | wc -l'''
                     echo "$numPods"
                     if (numPods == 0) {
                         // deploy to cluster velachery
+                        echo "Siruseri cluster is healthy"
                     } else {
                         def remote_velachery = [:]
                         remote_velachery.name = "Test08"
