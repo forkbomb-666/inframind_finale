@@ -46,7 +46,11 @@ pipeline {
         stage ('Kubernetes Deployment') {
             steps {
                 script {
-                    withKubeConfig(clusterName: 'kubernetes', contextName: 'kubernetes-admin', serverUrl: 'https://10.134.19.206:6443', credentialsId: 'kubeSecret'  )
+                    withKubeConfig(clusterName: 'kubernetes', contextName: 'kubernetes-admin', serverUrl: 'https://10.134.19.206:6443', credentialsId: 'kubesecret-siruseri'){
+                        script {
+                            sh "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+                        }
+                    }
                 }
             }
         }
