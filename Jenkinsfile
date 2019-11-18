@@ -47,12 +47,12 @@ pipeline {
             steps {
                 script {
                     node {
-                        def remote-siruseri  = [:]
-                        remote_siruseri.name = "Test06"
-                        remote_siruseri.host = "10.134.19.206"
-                        remote_siruseri.user = "user"
-                        remote_siruseri.password = "tcs#1234"
-                        remote_siruseri.allowAnyHosts = true
+                        def remote  = [:]
+                        remote.name = "Test06"
+                        remote.host = "10.134.19.206"
+                        remote.user = "user"
+                        remote.password = "tcs#1234"
+                        remote.allowAnyHosts = true
                         sshCommand remote: remote-siruseri, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
                         }
                     }
