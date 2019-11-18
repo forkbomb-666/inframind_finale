@@ -71,12 +71,12 @@ pipeline {
                     if (numPods == 0) {
                         // deploy to cluster velachery
                     } else {
-                        def remote = [:]
-                        remote.name = "Test08"
-                        remote.host = "10.134.19.208"
-                        remote.user = "user"
-                        remote.password = "tcs#1234"
-                        sshCommand remote, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
+                        def remote_velachery = [:]
+                        remote_velachery.name = "Test08"
+                        remote_velachery.host = "10.134.19.208"
+                        remote_velachery.user = "user"
+                        remote_velachery.password = "tcs#1234"
+                        sshCommand remote_velachery, command: "kubectl run --image=drake666/inframind-finale:latest inframind-finale-v$BUILD_NUMBER --port=9090 --replicas=2"
                     }
 
                 }
