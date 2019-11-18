@@ -1,9 +1,12 @@
-def remote-siruseri  = [:]
-remote-siruseri.name = "Test06"
-remote-siruseri.host = "10.134.19.206"
-remote-siruseri.user = "user"
-remote-siruseri.password = "tcs#1234"
-remote-siruseri.allowAnyHosts = true
+node {
+    def remote-siruseri  = [:]
+    remote-siruseri.name = "Test06"
+    remote-siruseri.host = "10.134.19.206"
+    remote-siruseri.user = "user"
+    remote-siruseri.password = "tcs#1234"
+    remote-siruseri.allowAnyHosts = true
+}
+
 
 
 pipeline {
